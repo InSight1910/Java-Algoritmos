@@ -156,6 +156,100 @@ public class Ejercicios {
             }
         }
     }
+    
+    public static int divisibleSumPairs(int n, int k, List<Integer> ar) {
+        int count = 0;
+        for(int i =0; i < n; i++) {
+            for(int j=0; i<n; j++){
+                if (((ar.get(i) + ar.get(j)) % 3) == 0) {
+                    count += 1;
+                }
+            }
+        }
+        
+        return count;
+    }
+    public static List<Integer> matchingStrings(List<String> strings, List<String> queries) {
+        // Write your code here
+        List<Integer> list = new ArrayList<Integer>();
+        
+        for(int i = 0; i < queries.size(); i++) {
+        System.out.println(i);
+        int count = 0;
+        for(int j = 0; j < strings.size(); j++) {
+            if (strings.get(i).equals(queries.get(j))) {
+                count += 1;
+            }
+        }
+        list.add(count);
+    }
+        return list;
+    }
+    public static int lonelyinteger(List<Integer> a) {
+    // Write your code here
+        int x = 0;
+        for (int i=0; i < a.size(); i++) {
+            int count = 0;
+            for (int j=0;j < a.size(); j++) {
+                if (a.get(i) == a.get(j)) {
+                    count++;
+                }
+            }
+            if (count == 1) {
+                x = a.get(i);
+            }
+        }
+        return x;
+    }
+    public static List<Integer> gradingStudents(List<Integer> grades) {
+        // Write your code here
+        List<Integer> list = new ArrayList<Integer>();
+        for (int i=0; i < grades.size(); i++) {
+            int grade = grades.get(i); 
+            if (grade > 38) {
+                int j = 0;
+                while (j*5 < grade) {
+                    j++;
+                }
+                if ((5*j) - grade < 3 ) {
+                    grade = 5*j;
+                    list.add(grade);
+                }
+            } else {
+                list.add(grade);
+            }
+        }
+        return list;
+    }
+    
+    public static String[] reverseString(String s) {
+        String[] splitedString = s.split("");
+        String reversedString = "";
+        for (int i = splitedString.length -1; i >= 0; i--) {
+            reversedString += splitedString[i];
+        }
+        return reversedString.split("");
+    }
+    
+    public static int multiplyRut(String[] s) {
+        int x = 1;
+        int sum = 0;
+        for(int i = 0; i < s.length; i++) {
+            x++;
+            if (x == 8) {
+                x = 2;
+            }
+            sum += Integer.parseInt(s[i]) * x;
+            
+        }
+        return sum;
+    }
+    public static int modulo11(String s) {
+        String rutSplited = s.split("-")[0];
+        String[] reversedString = reverseString(rutSplited);
+        int sum = multiplyRut(reversedString);
+        return (11 - (sum % 11));
+    }
     public static void main(String[] args) throws IOException{
         // System.out.println(factorial(6));
         /*List<Integer> arr = new ArrayList<>();
@@ -165,12 +259,7 @@ public class Ejercicios {
         arr.add(714532089);
         arr.add(938071625);
         miniMaxSum(arr);
-C;V;can of coke
-S;M;sweatTea()
-S;V;epsonPrinter
-C;M;santa claus
-C;C;mirror
-        */
+
         Scanner sc = new Scanner(System.in);
         List<String> list = new ArrayList<String>();
         BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
@@ -185,7 +274,18 @@ C;C;mirror
         for (int j =0; i< list.size(); j++) {
             System.out.println(list.get(j));
             camelCase(list.get(j));
-        }
+        } */
+        /*ArrayList<String> strings = new ArrayList<String>();
+        strings.add("aba");
+        strings.add("baba");
+        strings.add("aba");
+        strings.add("xzxb");
+        ArrayList<String> queries = new ArrayList<String>();
+        strings.add("aba");
+        strings.add("ab");
+        strings.add("xzxb");
+        matchingStrings(strings, queries);*/
+        System.err.println(modulo11("20819526-3"));
     }
     
 }
